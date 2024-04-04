@@ -9,8 +9,8 @@ public class Main {
         trainingMap = new LinkedHashMap<>(read(trainingFile));
         File testFile = new File("perceptron.test.data");
         testMap = new LinkedHashMap<>(read(testFile));
-        System.out.println("flag");
         Perceptron perceptron = new Perceptron();
+        perceptron.predict();
     }
     public static Map<ArrayList<Double>, String> read(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
