@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static int checker = 0;
     static LinkedHashMap<ArrayList<Double>, String> trainingMap;
     static LinkedHashMap<ArrayList<Double>, String> testMap;
     public static void main(String[] args) throws IOException {
@@ -10,7 +11,12 @@ public class Main {
         File testFile = new File("perceptron.test.data");
         testMap = new LinkedHashMap<>(read(testFile));
         Perceptron perceptron = new Perceptron();
-        perceptron.predict();
+        for(int i = 0; i < 1000; i++) {
+            perceptron.predict(trainingMap);
+        }
+        checker = 0;
+        perceptron.predict(testMap);
+        System.out.println(checker);
     }
     public static Map<ArrayList<Double>, String> read(File file) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));

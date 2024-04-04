@@ -6,16 +6,15 @@ class Perceptron {
     private double numWeight = mapEntry.getKey().size();
     private ArrayList<Double> weights = new ArrayList<>();
     private double theta = Math.random();
-    private double alpha = 0.4;
+    private double alpha = 0.01;
     public Perceptron() {
         for(int i = 0; i <  numWeight; i++){
             double weight = Math.random();
             weights.add(weight);
         }
     }
-
-    public int predict() {
-        for(Map.Entry<ArrayList<Double>, String> entry : Main.testMap.entrySet()){
+    public int predict(Map<ArrayList<Double>, String> map) {
+        for(Map.Entry<ArrayList<Double>, String> entry : map.entrySet()){
             ArrayList<Double> pararmeters = entry.getKey();
             ArrayList<Double> newWeights = new ArrayList<>();
             double y;
@@ -26,6 +25,7 @@ class Perceptron {
             }
             if (sum >= theta) {
                 y = 1;
+                Main.checker++;
                 if(entry.getValue() == "Iris-versicolor"){
                     d = 1;
                 }else{
